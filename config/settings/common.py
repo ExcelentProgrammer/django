@@ -142,6 +142,7 @@ INSTALLED_APPS += [
     "corsheaders",
     "django_filters",
     "rosetta",
+    "django_redis",
 
     #####################
     # My apps
@@ -177,6 +178,15 @@ LOCALE_PATHS = [
 MODELTRANSLATION_LANGUAGES = ("uz", "ru", "en")
 MODELTRANSLATION_DEFAULT_LANGUAGE = "uz"
 LANGUAGE_CODE = 'uz'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Media files
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://localhost:6379',
+    },
+}
 
 #####################
 # End My Settings

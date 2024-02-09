@@ -1,6 +1,8 @@
 # Current Project Ignores
 config/settings/local.py
 
+node_modules
+
 # OS ignores
 *.DS_Store
 
