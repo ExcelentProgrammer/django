@@ -5,26 +5,28 @@ from django.conf import settings
 from django.templatetags.static import static
 from django.utils.safestring import mark_safe
 
+from common.env import env
+
 register = template.Library()
 
 
 def getScript(url: object) -> str:
     ext: str = str(url).split(".")[-1]
 
-    if settings.DEBUG:
+    if env("VITE_LIVE"):
         url = f"http://localhost:5173/{url}"
     else:
-        url: str = static(url)
+        url: str = static(f"vite/{url}")
 
     if ext == "css":
         script: str = "<link rel='stylesheet' type='text/css' href='{}'>".format(url)
     else:
-        script: str = "<script type='text/javascript' src='{}'></script>".format(url)
+        script: str = "<script type='module' type='text/javascript' src='{}'></script>".format(url)
     return script
 
 
 @register.simple_tag
-def vite_load():
+def vite_load(*args):
     try:
         fd = open(f"{settings.VITE_APP_DIR}/manifest.json", "r")
         manifest = json.load(fd)
@@ -32,8 +34,7 @@ def vite_load():
         raise Exception(
             f"Vite manifest file not found or invalid. Maybe your {settings.VITE_APP_DIR}/manifest.json file is empty?"
         )
-
-    if not settings.DEBUG:
+    if not env("VITE_LIVE"):
         imports_files = "".join(
             [
                 getScript(file['file']) for file in manifest.values()
@@ -43,7 +44,7 @@ def vite_load():
     else:
         imports_files = "".join(
             [
-                getScript(file) for file in manifest.keys()
+                getScript(file) for file in args
             ]
         )
         imports_files += f"""

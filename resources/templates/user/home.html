@@ -7,12 +7,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    {% vite_load %}
 
 </head>
 <body>
 <h1>Home page</h1>
 
-<script type="module" src="http://localhost:5173/resources/static/js/app.js"></script>
+<div x-data="{
+        count:1
+    }">
+    <button x-on:click="count++">+</button>
+    <span x-text="count"></span>
+    <button x-on:click="count--">-</button>
+</div>
+
+{% vite_load "resources/static/js/app.js" %}
 </body>
 </html>

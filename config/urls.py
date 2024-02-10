@@ -4,6 +4,7 @@ from django.urls import path, include
 
 from config.routes.media import media_urls
 from config.routes.swagger import swagger_urls
+from core.utils import dd
 
 urlpatterns = [
     path('admin/', admin.site.urls),
