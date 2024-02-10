@@ -7,5 +7,6 @@ router = routers.DefaultRouter()
 router.register("", views.PostListView, basename="posts")
 
 urlpatterns = [
-    path("posts/", include(router.urls), name="posts")
+    path("posts/", include(router.urls), name="posts"),
+    path("auth/", include("core.apps.api.v1.auth.urls"), name="auth")
 ]
