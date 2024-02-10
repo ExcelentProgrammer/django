@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from core.http.serializers import AuthSerializer
-from core.http.tasks import my_task
 from core.services.BaseService import BaseService
 
 
