@@ -1,7 +1,9 @@
 from django.conf import settings
-from django.conf.urls.static import serve
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
+
+from config.routes.media import media_urls
+from config.routes.swagger import swagger_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,10 +12,9 @@ urlpatterns = [
     path("rosetta/", include("rosetta.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("debug", include("debug_toolbar.urls")),
-
-    #####################
-    # Static and Media files for production
-    #####################
-    re_path(r"static/(?P<path>.*)", serve, {"document_root": settings.STATIC_ROOT}),
-    re_path(r"media/(?P<path>.*)", serve, {"document_root": settings.MEDIA_ROOT}),
 ]
+
+urlpatterns += media_urls
+
+if settings.DEBUG:
+    urlpatterns += swagger_urls

@@ -9,5 +9,6 @@ environ.Env.read_env(os.path.join('.env'))
 #####################
 env = environ.Env(
     debug=(bool, False),
-    CACHE_TIME=(int, 180)
+    CACHE_TIME=(int, 180),
+    OTP_EXPIRE_TIME=(int, 2)
 )
