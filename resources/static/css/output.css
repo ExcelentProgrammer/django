@@ -630,10 +630,6 @@ video {
   padding: 1.25rem;
 }
 
-.px-\[\] {
-  padding-left: ;
-  padding-right: ;
-}
 
 .px-\[20px\] {
   padding-left: 20px;
@@ -699,10 +695,5 @@ video {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
-.text-\[\] {
-  color: ;
-}
 
-.text-\[2\] {
-  color: 2;
-}
+
