@@ -1,5 +1,5 @@
 #####################
-# Media swagger
+# Swagger urls
 #####################
 
 from django.urls import path

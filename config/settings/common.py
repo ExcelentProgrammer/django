@@ -1,8 +1,7 @@
+import importlib
 import logging
 import os.path
-from datetime import timedelta
 from pathlib import Path
-from typing import Any
 
 from django.utils.translation import gettext_lazy as _
 
@@ -16,10 +15,15 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    # my modules
+    #####################
+    # my install modules
+    #####################
     "jazzmin",
     "modeltranslation",
 
+    #####################
+    # Default apps
+    #####################
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'routes'
 
 TEMPLATES = [
     {
@@ -86,59 +90,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #####################
 # My Settings
 #####################
-
-JAZZMIN_SETTINGS: dict[str | Any, str | None | Any] = {
-    "site_title": "Jscorp",
-    "site_header": "Jscorp",
-    "site_brand": "Jscorp",
-    "site_logo": "/images/logo.png",
-    "login_logo": None,
-    "login_logo_dark": None,
-    "site_logo_classes": "img-circle",
-    "site_icon": None,
-    "welcome_sign": "Welcome to the library",
-    "copyright": "Acme Library Ltd",
-    "search_model": ["auth.User"],
-    "user_avatar": None,
-    "topmenu_links": [
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.User"},
-        {"app": "books"},
-    ],
-    "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
-    ],
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    "hide_apps": [],
-    "hide_models": [],
-    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
-    "custom_links": {
-        "books": [{
-            "name": "Make Messages",
-            "url": "make_messages",
-            "icon": "fas fa-comments",
-            "permissions": ["books.view_book"]
-        }]
-    },
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-    },
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
-    "related_modal_active": False,
-    "custom_css": None,
-    "custom_js": None,
-    "use_google_fonts_cdn": True,
-    "show_ui_builder": False,
-    "changeform_format": "horizontal_tabs",
-    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
-}
-
 INSTALLED_APPS += [
     "rest_framework",
     "corsheaders",
@@ -147,6 +98,10 @@ INSTALLED_APPS += [
     "django_redis",
     "rest_framework_simplejwt",
     "drf_yasg",
+    "crispy_forms",
+    "import_export",
+    "ckeditor",
+    "ckeditor_uploader",
 
     #####################
     # My apps
@@ -155,6 +110,14 @@ INSTALLED_APPS += [
     "core.http.HttpConfig",
     "core.apps.api.ApiConfig",
     "core.console.ConsoleConfig",
+]
+
+CONFIGS = [
+    "config.settings.conf.jazzmin",
+    "config.settings.conf.cache",
+    "config.settings.conf.ckeditor",
+    "config.settings.conf.jwt",
+    "config.settings.conf.rest_framework",
 ]
 
 logging.basicConfig(
@@ -187,73 +150,22 @@ LANGUAGE_CODE = 'uz'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Media files
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://localhost:6379',
-    },
-}
-
 AUTH_USER_MODEL = 'http.User'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
-#####################
-# End My Settings
-#####################
+CRISPY_TEMPLATE_PACK = 'tailwind'
 
-
-#####################
-# DRF settings
-#####################
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": False,
-    "BLACKLIST_AFTER_ROTATION": False,
-    "UPDATE_LAST_LOGIN": False,
-
-    "ALGORITHM": "HS256",
-    "SIGNING_KEY": SECRET_KEY,
-    "VERIFYING_KEY": "",
-    "AUDIENCE": None,
-    "ISSUER": None,
-    "JSON_ENCODER": None,
-    "JWK_URL": None,
-    "LEEWAY": 0,
-
-    "AUTH_HEADER_TYPES": ("Bearer",),
-    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
-    "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "user_id",
-    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
-
-    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-    "TOKEN_TYPE_CLAIM": "token_type",
-    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
-
-    "JTI_CLAIM": "jti",
-
-    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
-    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-
-    "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
-    "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
-    "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
-    "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
-    "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
-    "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
-}
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'
 
 #####################
-# End DRF settings
+# Import another settings files
 #####################
+for config in CONFIGS:
+    module = importlib.import_module(config)
+    for name in dir(module):
+        if not name.startswith("__"):
+            globals().update({name: getattr(module, name)})
