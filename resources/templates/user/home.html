@@ -12,14 +12,13 @@
 <body>
 <h1>Home page</h1>
 
-<div x-data="{
-        count:1
-    }">
+<div x-data="vars">
     <button x-on:click="count++">+</button>
     <span x-text="count"></span>
     <button x-on:click="count--">-</button>
 </div>
 
-{% vite_load "resources/static/js/app.js" %}
+{% vite_load "resources/static/js/app.js" "resources/static/css/app.css" %}
+
 </body>
 </html>
