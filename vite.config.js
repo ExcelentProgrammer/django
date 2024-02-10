@@ -1,8 +1,11 @@
 import {defineConfig} from "vite";
-const { resolve } = require('path');
+import react from "@vitejs/plugin-react";
+
+const {resolve} = require('path');
 
 export default defineConfig({
     base: "/",
+    plugins: [react()],
     build: {
         manifest: "manifest.json",
         outDir: resolve("./resources/static/vite"),

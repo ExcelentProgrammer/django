@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-09 15:07+0500\n"
-"PO-Revision-Date: 2024-02-09 15:10+0500\n"
+"POT-Creation-Date: 2024-02-10 15:29+0500\n"
+"PO-Revision-Date: 2024-02-10 15:29+0500\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: config/settings/common.py:163
+#: config/settings/common.py:174
 msgid "Russia"
 msgstr ""
 
-#: config/settings/common.py:164
+#: config/settings/common.py:175
 msgid "English"
 msgstr ""
 
-#: config/settings/common.py:165
+#: config/settings/common.py:176
 msgid "Uzbek"
 msgstr ""
 
-#: core/apps/home/models.py:13
-msgid "Home"
-msgstr "Bosh sahifa"
+#: resources/templates/user/home.html:18
+msgid "Jscorp/laravel"
+msgstr ""
 
-#: core/apps/home/models.py:14
-msgid "Homes"
-msgstr "Bosh sahifa"
+#: resources/templates/user/home.html:19
+msgid "Assalomu aleykum"
+msgstr ""
 
 #: venv/lib/python3.11/site-packages/click/_termui_impl.py:518
 #, python-brace-format
@@ -1536,6 +1536,27 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
+#: venv/lib/python3.11/site-packages/kombu/transport/qpid.py:1311
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/kombu/transport/qpid.py:1316
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/kombu/transport/qpid.py:1334
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
 #: venv/lib/python3.11/site-packages/modeltranslation/widgets.py:24
 msgid "None"
 msgstr ""
+
+#~ msgid "Home"
+#~ msgstr "Bosh sahifa"
+
+#~ msgid "Homes"
+#~ msgstr "Bosh sahifa"

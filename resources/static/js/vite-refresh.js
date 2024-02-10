@@ -1,4 +1,4 @@
-import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+import RefreshRuntime from 'http://localhost:5173/@react-refresh'
 
 if (RefreshRuntime) {
     RefreshRuntime.injectIntoGlobalHook(window)
