@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-10 15:29+0500\n"
+"POT-Creation-Date: 2024-02-10 16:18+0500\n"
 "PO-Revision-Date: 2024-02-09 15:09+0500\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Uzbek"
 msgstr ""
 
-#: resources/templates/user/home.html:18
-msgid "Jscorp/laravel"
+#: resources/templates/user/home.html:17
+msgid "Jscorp/django"
 msgstr ""
 
-#: resources/templates/user/home.html:19
+#: resources/templates/user/home.html:18
 msgid "Assalomu aleykum"
 msgstr ""
 

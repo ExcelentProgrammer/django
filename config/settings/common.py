@@ -146,6 +146,7 @@ INSTALLED_APPS += [
     "rosetta",
     "django_redis",
     "rest_framework_simplejwt",
+    "drf_yasg",
 
     #####################
     # My apps
@@ -153,7 +154,7 @@ INSTALLED_APPS += [
     "core.apps.home.apps.HomeConfig",
     "core.http.HttpConfig",
     "core.apps.api.ApiConfig",
-    "core.console.ConsoleConfig"
+    "core.console.ConsoleConfig",
 ]
 
 logging.basicConfig(
@@ -167,6 +168,7 @@ STATICFILES_DIRS = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
 STATIC_ROOT = os.path.join(BASE_DIR, "resources/staticfiles")
 VITE_APP_DIR = os.path.join(BASE_DIR, "resources/static/vite")
 
