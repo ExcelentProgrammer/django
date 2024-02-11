@@ -113,11 +113,11 @@ INSTALLED_APPS += [
 ]
 
 CONFIGS = [
-    "config.settings.conf.jazzmin",
-    "config.settings.conf.cache",
-    "config.settings.conf.ckeditor",
-    "config.settings.conf.jwt",
-    "config.settings.conf.rest_framework",
+    "config.conf.jazzmin",
+    "config.conf.cache",
+    "config.conf.ckeditor",
+    "config.conf.jwt",
+    "config.conf.rest_framework",
 ]
 
 logging.basicConfig(
