@@ -10,4 +10,5 @@ class PostListView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
     def dispatch(self, request, *args, **kwargs):
+        dsd
         return super().dispatch(request, *args, **kwargs)
