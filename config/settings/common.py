@@ -157,9 +157,6 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 CRISPY_TEMPLATE_PACK = 'tailwind'
 
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'
 
 #####################
 # Import another settings files
