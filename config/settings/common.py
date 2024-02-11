@@ -120,6 +120,11 @@ CONFIGS = [
     "config.conf.rest_framework",
 ]
 
+FACTORYS = [
+    ("core.http.factorys.PostFactory", 100),
+    ("core.http.factorys.UserFactory", 1),
+]
+
 logging.basicConfig(
     filename=f"{BASE_DIR}/logs/django.log",
     level=logging.DEBUG,
@@ -156,7 +161,6 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 CRISPY_TEMPLATE_PACK = 'tailwind'
-
 
 #####################
 # Import another settings files
