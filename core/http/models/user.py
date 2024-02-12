@@ -29,6 +29,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     phone = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, null=True, blank=True)
     USERNAME_FIELD = u"phone"
 
     objects = UserManager()
