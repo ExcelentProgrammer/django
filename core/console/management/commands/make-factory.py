@@ -4,5 +4,5 @@ from core.utils.console import BaseMake
 class Command(BaseMake):
     help = 'Factory seeder'
 
-    path = "factory"
+    path = "database/factory"
     name = "Factory"

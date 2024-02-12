@@ -121,11 +121,12 @@ CONFIGS = [
 ]
 
 FACTORYS = [
-    ("core.http.factory.PostFactory", 100),
-    ("core.http.factory.UserFactory", 1),
+    ("core.http.database.factory.PostFactory", 100),
+    ("core.http.database.factory.UserFactory", 1),
 ]
+
 SEEDERS = [
-    "core.http.seeder.UserSeeder"
+    "core.http.database.seeder.UserSeeder"
 ]
 
 logging.basicConfig(
