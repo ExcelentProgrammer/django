@@ -18,3 +18,11 @@ class SmsNotFoundException(Exception):
 class IsExpiredException(Exception):
     def __init__(self, message):
         self.message = message
+
+
+class BreakException(Exception):
+
+    def __init__(self, *args, message: str = None, data: dict | list = []):
+        self.args = list(args)
+        self.message = message
+        self.data = data

@@ -2,13 +2,7 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from core.http.models import Post, PendingUser, User
-
-
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Post
-        fields = ['title', "desc", "image"]
+from core.http.models import PendingUser, User, FrontendTranslation, Post
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -71,3 +65,19 @@ class ResetConfirmationSerializer(serializers.Serializer):
         if user.exists():
             return value
         raise serializers.ValidationError(_("User does not exist"))
+
+
+#####################
+# Another serializers
+#####################
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['title', "desc", "image"]
+
+
+class FrontendTransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FrontendTranslation
+        fields = ["key", "value"]

@@ -88,17 +88,21 @@ class SmsConfirm(models.Model):
             self.unlock_time = datetime.now() + timedelta(
                 minutes=self.TRY_BLOCK_MINUTES)
 
-        if self.resend_unlock_time is not None and self.resend_unlock_time.timestamp() < datetime.now().timestamp():
+        if self.resend_unlock_time is not None and \
+                self.resend_unlock_time.timestamp() \
+                < datetime.now().timestamp():
             self.resend_unlock_time = None
 
-        if self.unlock_time is not None and self.unlock_time.timestamp() < datetime.now().timestamp():
+        if self.unlock_time is not None and self.unlock_time.timestamp() \
+                < datetime.now().timestamp():
             self.unlock_time = None
         self.save()
 
     def is_expired(self):
-        return self.expire_time.timestamp() < datetime.now().timestamp() if hasattr(
-            self.expire_time,
-            "timestamp") else None
+        return self.expire_time.timestamp() < datetime.now().timestamp() if \
+            hasattr(
+                self.expire_time,
+                "timestamp") else None
 
     def is_block(self):
         return self.unlock_time is not None
@@ -115,3 +119,7 @@ class SmsConfirm(models.Model):
         expire = math.floor(expire)
 
         return '{:02d}:{:02d}'.format(minutes, expire)
+
+    def __str__(self) -> str:
+        return "{phone} | {code}".format(phone=self.phone,
+                                         code=self.code)

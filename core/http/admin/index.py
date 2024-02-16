@@ -3,7 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
 
-from core.http.models import Post, User, SmsConfirm
+from core.http.models import Post, User, SmsConfirm, FrontendTranslation
+from core.http.resources import FrontendTranslationResource
 from core.http.resources.index import PostResource
 
 
@@ -17,6 +18,15 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['phone', "first_name", "last_name"]
 
 
+class FrontendTranslationAdmin(TabbedTranslationAdmin, ImportExportModelAdmin):
+    fields: tuple = ("key", "value")
+    required_languages: tuple = ('uz',)
+    list_display = ["key", "value"]
+
+    resource_classes = [FrontendTranslationResource]
+
+
+admin.site.register(FrontendTranslation, FrontendTranslationAdmin)
 admin.site.register(SmsConfirm)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Post, PostAdmin)

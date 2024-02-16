@@ -8,7 +8,8 @@ DATABASES = {
 }
 
 MIDDLEWARE += [
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    "core.middlewares.ExceptionMiddleware"
 ]
 
 ####################
