@@ -11,6 +11,9 @@ class Console(BaseCommand):
     def error(self, message):
         self.stdout.write(self.style.ERROR(message))
 
+    def log(self, message):
+        self.stdout.write(self.style.ERROR("\n====================\n{}\n====================\n".format(message)))
+
 
 class BaseMake(BaseCommand):
     def __init__(self, *args, **options):
