@@ -19,9 +19,11 @@ def getScript(url: object) -> str:
         url: str = static(f"vite/{url}")
 
     if ext == "css":
-        script: str = "<link rel='stylesheet' type='text/css' href='{}'>".format(url)
+        script: str = "<link rel='stylesheet' type='text/css' href='{}'>".format(
+            url)
     else:
-        script: str = "<script type='module' type='text/javascript' src='{}'></script>".format(url)
+        script: str = "<script type='module' type='text/javascript' src='{}'></script>".format(
+            url)
     return script
 
 

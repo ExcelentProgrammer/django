@@ -36,6 +36,7 @@
     color: var(--header-link-color);
     cursor: pointer;
 }
+
 .selector-chosen .list-footer-display__clear {
     color: var(--breadcrumbs-fg);
 }
@@ -103,6 +104,7 @@
     margin: 0 0 10px;
     border-radius: 0 0 4px 4px;
 }
+
 .selector .selector-chosen--with-filtered select {
     margin: 0;
     border-radius: 0;

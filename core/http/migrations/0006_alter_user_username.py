@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('http', '0005_alter_post_desc_alter_post_desc_en_and_more'),
     ]

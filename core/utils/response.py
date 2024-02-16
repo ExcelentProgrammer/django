@@ -1,5 +1,5 @@
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
 
 
 class ApiResponse:
@@ -16,7 +16,8 @@ class ApiResponse:
         return Response(data=response, status=status_code)
 
     @staticmethod
-    def error(message="", data=None, error_code=0, status_code=status.HTTP_400_BAD_REQUEST):
+    def error(message="", data=None, error_code=0,
+              status_code=status.HTTP_400_BAD_REQUEST):
         if data is None:
             data = []
         response = {

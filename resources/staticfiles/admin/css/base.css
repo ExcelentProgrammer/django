@@ -55,35 +55,33 @@ html[data-theme="light"],
     --object-tools-bg: var(--close-button-bg);
     --object-tools-hover-bg: var(--close-button-hover-bg);
 
-    --font-family-primary:
-        "Segoe UI",
-        system-ui,
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        sans-serif,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol",
-        "Noto Color Emoji";
-    --font-family-monospace:
-        ui-monospace,
-        Menlo,
-        Monaco,
-        "Cascadia Mono",
-        "Segoe UI Mono",
-        "Roboto Mono",
-        "Oxygen Mono",
-        "Ubuntu Monospace",
-        "Source Code Pro",
-        "Fira Mono",
-        "Droid Sans Mono",
-        "Courier New",
-        monospace,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol",
-        "Noto Color Emoji";
+    --font-family-primary: "Segoe UI",
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+    --font-family-monospace: ui-monospace,
+    Menlo,
+    Monaco,
+    "Cascadia Mono",
+    "Segoe UI Mono",
+    "Roboto Mono",
+    "Oxygen Mono",
+    "Ubuntu Monospace",
+    "Source Code Pro",
+    "Fira Mono",
+    "Droid Sans Mono",
+    "Courier New",
+    monospace,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 html, body {
@@ -139,7 +137,7 @@ p {
     line-height: 140%;
 }
 
-h1,h2,h3,h4,h5 {
+h1, h2, h3, h4, h5 {
     font-weight: bold;
 }
 
@@ -269,7 +267,7 @@ hr {
 }
 
 div.help ul {
-     margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .help-tooltip {
@@ -474,6 +472,7 @@ input, textarea, select, .form-row p, form .button {
     font-weight: normal;
     font-size: 0.8125rem;
 }
+
 .form-row div.help {
     padding: 2px 3px;
 }
@@ -787,7 +786,7 @@ a.deletelink:focus, a.deletelink:hover {
     background-color: var(--object-tools-hover-bg);
 }
 
-.object-tools a:focus{
+.object-tools a:focus {
     text-decoration: none;
 }
 
@@ -840,7 +839,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .main > .content {
-    flex:  1 0;
+    flex: 1 0;
     max-width: 100%;
 }
 
@@ -924,7 +923,7 @@ a.deletelink:focus, a.deletelink:hover {
     color: var(--header-link-color);
 }
 
-#header a:focus , #header a:hover {
+#header a:focus, #header a:hover {
     text-decoration: underline;
 }
 
@@ -974,7 +973,7 @@ a.deletelink:focus, a.deletelink:hover {
     text-align: right;
 }
 
-#user-tools, #logout-form button{
+#user-tools, #logout-form button {
     padding: 0;
     font-weight: 300;
     font-size: 0.6875rem;
@@ -1148,7 +1147,7 @@ a.deletelink:focus, a.deletelink:hover {
     height: 1px;
     padding: 0;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
     color: var(--body-fg);

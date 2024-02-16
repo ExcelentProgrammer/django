@@ -12,7 +12,9 @@ class Console(BaseCommand):
         self.stdout.write(self.style.ERROR(message))
 
     def log(self, message):
-        self.stdout.write(self.style.ERROR("\n====================\n{}\n====================\n".format(message)))
+        self.stdout.write(self.style.ERROR(
+            "\n====================\n{}\n====================\n".format(
+                message)))
 
 
 class BaseMake(BaseCommand):
@@ -25,19 +27,26 @@ class BaseMake(BaseCommand):
 
     def handle(self, *args, **options):
         name = options.get("name")
-        stub = open(os.path.join(settings.BASE_DIR, f'stub/{self.path}.stub'), 'r')
+        stub = open(os.path.join(settings.BASE_DIR, f'stub/{self.path}.stub'),
+                    'r')
         data = stub.read()
         stub.close()
         stub = data.replace("{{name}}", name)
 
-        if os.path.exists(os.path.join(settings.BASE_DIR, "core/http/{}/{}.py".format(self.path, name.lower()))):
+        if os.path.exists(os.path.join(settings.BASE_DIR,
+                                       "core/http/{}/{}.py".format(self.path,
+                                                                   name.lower()))):
             self.console.error(f"{self.name} already exists")
             return
 
-        if not os.path.exists(os.path.join(settings.BASE_DIR, f"core/http/{self.path}")):
+        if not os.path.exists(
+                os.path.join(settings.BASE_DIR, f"core/http/{self.path}")):
             os.mkdir(os.path.join(settings.BASE_DIR, f"core/http/{self.path}"))
 
-        with open(os.path.join(settings.BASE_DIR, "core/http/{}/{}.py".format(self.path, name.lower())), "w+") as file:
+        with open(os.path.join(settings.BASE_DIR,
+                               "core/http/{}/{}.py".format(self.path,
+                                                           name.lower())),
+                  "w+") as file:
             file.write(stub)
             file.close()
         self.console.success(f"{self.name} created")

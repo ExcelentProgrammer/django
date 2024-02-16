@@ -17,7 +17,9 @@ class Command(BaseCommand):
         SEEDERS = settings.SEEDERS if hasattr(settings, "SEEDERS") else []
 
         if len(SEEDERS) == 0:
-            self.print("SEEDERS not defined:\n\nsettings file add SEEDERS variable", "error")
+            self.print(
+                "SEEDERS not defined:\n\nsettings file add SEEDERS variable",
+                "error")
             return
 
         for seeder in SEEDERS:

@@ -64,7 +64,7 @@ div.breadcrumbs {
 /* SORTABLE TABLES */
 
 table thead th.sorted .sortoptions {
-   float: left;
+    float: left;
 }
 
 thead th.sorted .text {
@@ -235,19 +235,19 @@ fieldset .fieldBox {
 }
 
 .selector-add {
-  background: url(../img/selector-icons.svg) 0 -64px no-repeat;
+    background: url(../img/selector-icons.svg) 0 -64px no-repeat;
 }
 
 .active.selector-add:focus, .active.selector-add:hover {
-  background-position: 0 -80px;
+    background-position: 0 -80px;
 }
 
 .selector-remove {
-  background: url(../img/selector-icons.svg) 0 -96px no-repeat;
+    background: url(../img/selector-icons.svg) 0 -96px no-repeat;
 }
 
 .active.selector-remove:focus, .active.selector-remove:hover {
-  background-position: 0 -112px;
+    background-position: 0 -112px;
 }
 
 a.selector-chooseall {
@@ -289,7 +289,7 @@ form .form-row p.datetime {
     padding-left: inherit;
     left: 10px;
     right: inherit;
-    float:left;
+    float: left;
 }
 
 .inline-related h3 span.delete label {

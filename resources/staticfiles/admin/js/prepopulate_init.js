@@ -2,7 +2,7 @@
 {
     const $ = django.jQuery;
     const fields = $('#django-admin-prepopulated-fields-constants').data('prepopulatedFields');
-    $.each(fields, function(index, field) {
+    $.each(fields, function (index, field) {
         $(
             '.empty-form .form-row .field-' + field.name +
             ', .empty-form.form-row .field-' + field.name +

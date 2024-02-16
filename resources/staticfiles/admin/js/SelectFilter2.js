@@ -7,7 +7,7 @@ Requires core.js and SelectBox.js.
 'use strict';
 {
     window.SelectFilter = {
-        init: function(field_id, field_name, is_stacked) {
+        init: function (field_id, field_name, is_stacked) {
             if (field_id.match(/__prefix__/)) {
                 // Don't initialize on empty forms.
                 return;
@@ -96,7 +96,7 @@ Requires core.js and SelectBox.js.
                     [field_name]
                 )
             );
-            
+
             const filter_selected_p = quickElement('p', selector_chosen, '', 'id', field_id + '_filter_selected');
             filter_selected_p.className = 'selector-filter';
 
@@ -115,18 +115,18 @@ Requires core.js and SelectBox.js.
 
             const to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', '', 'size', from_box.size, 'name', from_box.name);
             to_box.className = 'filtered';
-            
+
             const warning_footer = quickElement('div', selector_chosen, '', 'class', 'list-footer-display');
             quickElement('span', warning_footer, '', 'id', field_id + '_list-footer-display-text');
             quickElement('span', warning_footer, ' (click to clear)', 'class', 'list-footer-display__clear');
-            
+
             const clear_all = quickElement('a', selector_chosen, gettext('Remove all'), 'title', interpolate(gettext('Click to remove all chosen %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_link');
             clear_all.className = 'selector-clearall';
 
             from_box.name = from_box.name + '_old';
 
             // Set up the JavaScript event handlers for the select box filter interface
-            const move_selection = function(e, elem, move_func, from, to) {
+            const move_selection = function (e, elem, move_func, from, to) {
                 if (elem.classList.contains('active')) {
                     move_func(from, to);
                     SelectFilter.refresh_icons(field_id);
@@ -135,48 +135,48 @@ Requires core.js and SelectBox.js.
                 }
                 e.preventDefault();
             };
-            choose_all.addEventListener('click', function(e) {
+            choose_all.addEventListener('click', function (e) {
                 move_selection(e, this, SelectBox.move_all, field_id + '_from', field_id + '_to');
             });
-            add_link.addEventListener('click', function(e) {
+            add_link.addEventListener('click', function (e) {
                 move_selection(e, this, SelectBox.move, field_id + '_from', field_id + '_to');
             });
-            remove_link.addEventListener('click', function(e) {
+            remove_link.addEventListener('click', function (e) {
                 move_selection(e, this, SelectBox.move, field_id + '_to', field_id + '_from');
             });
-            clear_all.addEventListener('click', function(e) {
+            clear_all.addEventListener('click', function (e) {
                 move_selection(e, this, SelectBox.move_all, field_id + '_to', field_id + '_from');
             });
-            warning_footer.addEventListener('click', function(e) {
+            warning_footer.addEventListener('click', function (e) {
                 filter_selected_input.value = '';
                 SelectBox.filter(field_id + '_to', '');
                 SelectFilter.refresh_filtered_warning(field_id);
                 SelectFilter.refresh_icons(field_id);
             });
-            filter_input.addEventListener('keypress', function(e) {
+            filter_input.addEventListener('keypress', function (e) {
                 SelectFilter.filter_key_press(e, field_id, '_from', '_to');
             });
-            filter_input.addEventListener('keyup', function(e) {
+            filter_input.addEventListener('keyup', function (e) {
                 SelectFilter.filter_key_up(e, field_id, '_from');
             });
-            filter_input.addEventListener('keydown', function(e) {
+            filter_input.addEventListener('keydown', function (e) {
                 SelectFilter.filter_key_down(e, field_id, '_from', '_to');
             });
-            filter_selected_input.addEventListener('keypress', function(e) {
+            filter_selected_input.addEventListener('keypress', function (e) {
                 SelectFilter.filter_key_press(e, field_id, '_to', '_from');
             });
-            filter_selected_input.addEventListener('keyup', function(e) {
+            filter_selected_input.addEventListener('keyup', function (e) {
                 SelectFilter.filter_key_up(e, field_id, '_to', '_selected_input');
             });
-            filter_selected_input.addEventListener('keydown', function(e) {
+            filter_selected_input.addEventListener('keydown', function (e) {
                 SelectFilter.filter_key_down(e, field_id, '_to', '_from');
             });
-            selector_div.addEventListener('change', function(e) {
+            selector_div.addEventListener('change', function (e) {
                 if (e.target.tagName === 'SELECT') {
                     SelectFilter.refresh_icons(field_id);
                 }
             });
-            selector_div.addEventListener('dblclick', function(e) {
+            selector_div.addEventListener('dblclick', function (e) {
                 if (e.target.tagName === 'OPTION') {
                     if (e.target.closest('select').id === field_id + '_to') {
                         SelectBox.move(field_id + '_to', field_id + '_from');
@@ -186,7 +186,7 @@ Requires core.js and SelectBox.js.
                     SelectFilter.refresh_icons(field_id);
                 }
             });
-            from_box.closest('form').addEventListener('submit', function() {
+            from_box.closest('form').addEventListener('submit', function () {
                 SelectBox.filter(field_id + '_to', '');
                 SelectBox.select_all(field_id + '_to');
             });
@@ -198,14 +198,14 @@ Requires core.js and SelectBox.js.
             // Initial icon refresh
             SelectFilter.refresh_icons(field_id);
         },
-        any_selected: function(field) {
+        any_selected: function (field) {
             // Temporarily add the required attribute and check validity.
             field.required = true;
             const any_selected = field.checkValidity();
             field.required = false;
             return any_selected;
         },
-        refresh_filtered_warning: function(field_id) {
+        refresh_filtered_warning: function (field_id) {
             const count = SelectBox.get_hidden_node_count(field_id + '_to');
             const selector = document.getElementById(field_id + '_selector_chosen');
             const warning = document.getElementById(field_id + '_list-footer-display-text');
@@ -215,15 +215,15 @@ Requires core.js and SelectBox.js.
                 '%s selected options not visible',
                 count
             ), [count]);
-            if(count > 0) {
+            if (count > 0) {
                 selector.className += ' selector-chosen--with-filtered';
             }
         },
-        refresh_filtered_selects: function(field_id) {
+        refresh_filtered_selects: function (field_id) {
             SelectBox.filter(field_id + '_from', document.getElementById(field_id + "_input").value);
             SelectBox.filter(field_id + '_to', document.getElementById(field_id + "_selected_input").value);
         },
-        refresh_icons: function(field_id) {
+        refresh_icons: function (field_id) {
             const from = document.getElementById(field_id + '_from');
             const to = document.getElementById(field_id + '_to');
             // Active if at least one item is selected
@@ -234,7 +234,7 @@ Requires core.js and SelectBox.js.
             document.getElementById(field_id + '_remove_all_link').classList.toggle('active', to.querySelector('option'));
             SelectFilter.refresh_filtered_warning(field_id);
         },
-        filter_key_press: function(event, field_id, source, target) {
+        filter_key_press: function (event, field_id, source, target) {
             const source_box = document.getElementById(field_id + source);
             // don't submit form if user pressed Enter
             if ((event.which && event.which === 13) || (event.keyCode && event.keyCode === 13)) {
@@ -244,7 +244,7 @@ Requires core.js and SelectBox.js.
                 event.preventDefault();
             }
         },
-        filter_key_up: function(event, field_id, source, filter_input) {
+        filter_key_up: function (event, field_id, source, filter_input) {
             const input = filter_input || '_input';
             const source_box = document.getElementById(field_id + source);
             const temp = source_box.selectedIndex;
@@ -253,7 +253,7 @@ Requires core.js and SelectBox.js.
             SelectFilter.refresh_filtered_warning(field_id);
             SelectFilter.refresh_icons(field_id);
         },
-        filter_key_down: function(event, field_id, source, target) {
+        filter_key_down: function (event, field_id, source, target) {
             const source_box = document.getElementById(field_id + source);
             // right key (39) or left key (37)
             const direction = source === '_from' ? 39 : 37;
@@ -277,8 +277,8 @@ Requires core.js and SelectBox.js.
         }
     };
 
-    window.addEventListener('load', function(e) {
-        document.querySelectorAll('select.selectfilter, select.selectfilterstacked').forEach(function(el) {
+    window.addEventListener('load', function (e) {
+        document.querySelectorAll('select.selectfilter, select.selectfilterstacked').forEach(function (el) {
             const data = el.dataset;
             SelectFilter.init(el.id, data.fieldName, parseInt(data.isStacked, 10));
         });

@@ -23,7 +23,8 @@ class LoginSerializer(serializers.Serializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    phone = serializers.CharField(max_length=255, validators=[UniqueValidator(queryset=User.objects.all())])
+    phone = serializers.CharField(max_length=255, validators=[
+        UniqueValidator(queryset=User.objects.all())])
 
     class Meta:
         model = User

@@ -78,10 +78,34 @@
         'Ņ': 'N', 'Š': 'S', 'Ū': 'U', 'Ž': 'Z'
     };
     const ARABIC_MAP = {
-        'أ': 'a', 'ب': 'b', 'ت': 't', 'ث': 'th', 'ج': 'g', 'ح': 'h', 'خ': 'kh', 'د': 'd',
-        'ذ': 'th', 'ر': 'r', 'ز': 'z', 'س': 's', 'ش': 'sh', 'ص': 's', 'ض': 'd', 'ط': 't',
-        'ظ': 'th', 'ع': 'aa', 'غ': 'gh', 'ف': 'f', 'ق': 'k', 'ك': 'k', 'ل': 'l', 'م': 'm',
-        'ن': 'n', 'ه': 'h', 'و': 'o', 'ي': 'y'
+        'أ': 'a',
+        'ب': 'b',
+        'ت': 't',
+        'ث': 'th',
+        'ج': 'g',
+        'ح': 'h',
+        'خ': 'kh',
+        'د': 'd',
+        'ذ': 'th',
+        'ر': 'r',
+        'ز': 'z',
+        'س': 's',
+        'ش': 'sh',
+        'ص': 's',
+        'ض': 'd',
+        'ط': 't',
+        'ظ': 'th',
+        'ع': 'aa',
+        'غ': 'gh',
+        'ف': 'f',
+        'ق': 'k',
+        'ك': 'k',
+        'ل': 'l',
+        'م': 'm',
+        'ن': 'n',
+        'ه': 'h',
+        'و': 'o',
+        'ي': 'y'
     };
     const LITHUANIAN_MAP = {
         'ą': 'a', 'č': 'c', 'ę': 'e', 'ė': 'e', 'į': 'i', 'š': 's', 'ų': 'u',
@@ -99,11 +123,39 @@
         'Ç': 'C', 'Ə': 'E', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U'
     };
     const GEORGIAN_MAP = {
-        'ა': 'a', 'ბ': 'b', 'გ': 'g', 'დ': 'd', 'ე': 'e', 'ვ': 'v', 'ზ': 'z',
-        'თ': 't', 'ი': 'i', 'კ': 'k', 'ლ': 'l', 'მ': 'm', 'ნ': 'n', 'ო': 'o',
-        'პ': 'p', 'ჟ': 'j', 'რ': 'r', 'ს': 's', 'ტ': 't', 'უ': 'u', 'ფ': 'f',
-        'ქ': 'q', 'ღ': 'g', 'ყ': 'y', 'შ': 'sh', 'ჩ': 'ch', 'ც': 'c', 'ძ': 'dz',
-        'წ': 'w', 'ჭ': 'ch', 'ხ': 'x', 'ჯ': 'j', 'ჰ': 'h'
+        'ა': 'a',
+        'ბ': 'b',
+        'გ': 'g',
+        'დ': 'd',
+        'ე': 'e',
+        'ვ': 'v',
+        'ზ': 'z',
+        'თ': 't',
+        'ი': 'i',
+        'კ': 'k',
+        'ლ': 'l',
+        'მ': 'm',
+        'ნ': 'n',
+        'ო': 'o',
+        'პ': 'p',
+        'ჟ': 'j',
+        'რ': 'r',
+        'ს': 's',
+        'ტ': 't',
+        'უ': 'u',
+        'ფ': 'f',
+        'ქ': 'q',
+        'ღ': 'g',
+        'ყ': 'y',
+        'შ': 'sh',
+        'ჩ': 'ch',
+        'ც': 'c',
+        'ძ': 'dz',
+        'წ': 'w',
+        'ჭ': 'ch',
+        'ხ': 'x',
+        'ჯ': 'j',
+        'ჰ': 'h'
     };
 
     const ALL_DOWNCODE_MAPS = [
@@ -126,7 +178,7 @@
     ];
 
     const Downcoder = {
-        'Initialize': function() {
+        'Initialize': function () {
             if (Downcoder.map) { // already made
                 return;
             }
@@ -140,7 +192,7 @@
 
     function downcode(slug) {
         Downcoder.Initialize();
-        return slug.replace(Downcoder.regex, function(m) {
+        return slug.replace(Downcoder.regex, function (m) {
             return Downcoder.map[m];
         });
     }
@@ -165,5 +217,6 @@
         s = s.substring(0, num_chars); // trim to first num_chars chars
         return s.replace(/-+$/g, ''); // trim any trailing hyphens
     }
+
     window.URLify = URLify;
 }

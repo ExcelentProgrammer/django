@@ -2,7 +2,8 @@ from django.utils.translation import gettext as _
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from core.enums import Messages
-from core.exceptions import IsBlockException, SmsNotFoundException, IsExpiredException, InvalidConfirmationCodeException
+from core.exceptions import IsBlockException, SmsNotFoundException, \
+    IsExpiredException, InvalidConfirmationCodeException
 from core.http.models import PendingUser, User
 from core.services.BaseService import BaseService
 from core.services.sms import SmsService
@@ -36,7 +37,8 @@ class UserService(BaseService):
         try:
             self.sms_service.send_confirm(phone)
             return True
-        except (IsBlockException, SmsNotFoundException, IsExpiredException, InvalidConfirmationCodeException) as e:
+        except (IsBlockException, SmsNotFoundException, IsExpiredException,
+                InvalidConfirmationCodeException) as e:
             ResponseException(e.message, data={"expired": e.expired})
         except Exception as e:
             ResponseException(e)
@@ -45,8 +47,10 @@ class UserService(BaseService):
         """Create user if user not found"""
 
         if User.objects.filter(phone=pending_user.phone).exists():
-            ResponseException(_(Messages.USER_ALREADY_EXISTS), error_code=Codes.USER_ALREADY_EXISTS_ERROR)
-        user = User.objects.create_user(phone=pending_user.phone, password=pending_user.password)
+            ResponseException(_(Messages.USER_ALREADY_EXISTS),
+                              error_code=Codes.USER_ALREADY_EXISTS_ERROR)
+        user = User.objects.create_user(phone=pending_user.phone,
+                                        password=pending_user.password)
         user.first_name = pending_user.first_name
         user.last_name = pending_user.last_name
         user.save()

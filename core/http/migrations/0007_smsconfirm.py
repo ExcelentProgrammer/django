@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('http', '0006_alter_user_username'),
     ]
@@ -13,14 +12,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SmsConfirm',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
                 ('code', models.IntegerField()),
                 ('try_count', models.IntegerField()),
                 ('resend_count', models.IntegerField()),
                 ('phone', models.CharField(max_length=20)),
                 ('expire_time', models.DateTimeField(blank=True, null=True)),
                 ('unlock_time', models.DateTimeField(blank=True, null=True)),
-                ('resend_unlock_time', models.DateTimeField(blank=True, null=True)),
+                ('resend_unlock_time',
+                 models.DateTimeField(blank=True, null=True)),
             ],
         ),
     ]

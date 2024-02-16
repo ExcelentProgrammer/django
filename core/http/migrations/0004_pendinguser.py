@@ -12,9 +12,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PendingUser',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True,
+                                           serialize=False,
+                                           verbose_name='ID')),
                 ('phone', models.CharField(max_length=20)),
-                ('code', models.CharField(blank=True, max_length=8, null=True)),
+                (
+                'code', models.CharField(blank=True, max_length=8, null=True)),
                 ('password', models.CharField(max_length=255, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],

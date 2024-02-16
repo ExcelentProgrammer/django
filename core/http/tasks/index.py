@@ -10,7 +10,11 @@ def SendConfirm(phone, code):
     console = Console()
     try:
         service: SendService = SendService()
-        service.send_sms(phone, _("Sizning Tasdiqlash ko'dingiz: %(code)s") % {'code': code})
-        console.success("Success: {phone}-{code}".format(phone=phone, code=code))
+        service.send_sms(phone, _("Sizning Tasdiqlash ko'dingiz: %(code)s") % {
+            'code': code})
+        console.success(
+            "Success: {phone}-{code}".format(phone=phone, code=code))
     except Exception as e:
-        console.error("Error: {phone}-{code}\n\n{error}".format(phone=phone, code=code, error=e))
+        console.error(
+            "Error: {phone}-{code}\n\n{error}".format(phone=phone, code=code,
+                                                      error=e))

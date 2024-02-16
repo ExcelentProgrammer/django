@@ -17,7 +17,9 @@ class Command(BaseCommand):
         FACTORYS = settings.FACTORYS if hasattr(settings, "FACTORYS") else []
 
         if len(FACTORYS) == 0:
-            self.print("FACTORYS not defined:\n\nsettings file add FACTORYS variable", "error")
+            self.print(
+                "FACTORYS not defined:\n\nsettings file add FACTORYS variable",
+                "error")
             return
 
         for factory in FACTORYS:
