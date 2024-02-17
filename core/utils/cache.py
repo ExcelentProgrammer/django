@@ -10,7 +10,7 @@ class Cache:
     @staticmethod
     def remember(func, key=None):
         key = md5(key.encode('utf-8')).hexdigest()
-        response = cache.get(key, None)
+        response = cache.get(key)
         if response is None:
             response = func()
             cache.set(key, response, env("CACHE_TIME"))
