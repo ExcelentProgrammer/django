@@ -5,6 +5,7 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
 from common.env import env
+from core.utils.console import Console
 
 BASE_DIR = Path(
     __file__).resolve().parent.parent.parent  # har bir parent bitta papka
@@ -167,7 +168,8 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 CRISPY_TEMPLATE_PACK = 'tailwind'
 
-ALLOWED_HOSTS += env("ALLOWED_HOSTS").strip(",")
+ALLOWED_HOSTS += env("ALLOWED_HOSTS").split(",")
+
 
 #####################
 # Import another settings files
