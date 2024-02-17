@@ -1,5 +1,5 @@
 import math
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
@@ -49,7 +49,7 @@ class PendingUser(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{str(self.phone)}: {self.code}"
+        return f"{str(self.phone)}"
 
     def is_valid(self) -> bool:
         """10 mins OTP validation"""

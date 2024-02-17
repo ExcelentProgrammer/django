@@ -19,10 +19,11 @@ def getScript(url: object) -> str:
         url: str = static(f"vite/{url}")
 
     if ext == "css":
-        script: str = "<link rel='stylesheet' type='text/css' href='{}'>".format(
-            url)
+        script: str = "<link rel='stylesheet' type='text/css' href='{}'>" \
+            .format(url)
     else:
-        script: str = "<script type='module' type='text/javascript' src='{}'></script>".format(
+        script: str = ("<script type='module' type='text/javascript' src='{"
+                       "}'></script>").format(
             url)
     return script
 
@@ -32,9 +33,10 @@ def vite_load(*args):
     try:
         fd = open(f"{settings.VITE_APP_DIR}/manifest.json", "r")
         manifest = json.load(fd)
-    except:
+    except Exception as e:
         raise Exception(
-            f"Vite manifest file not found or invalid. Maybe your {settings.VITE_APP_DIR}/manifest.json file is empty?"
+            f"Vite manifest file not found or invalid. Maybe your"
+            f" {settings.VITE_APP_DIR}/manifest.json file is empty?"
         )
     if not env("VITE_LIVE"):
         imports_files = "".join(
@@ -49,9 +51,10 @@ def vite_load(*args):
                 getScript(file) for file in args
             ]
         )
-        imports_files += f"""
-                          <script type="module" src="http://localhost:5173/@vite/client"></script>
-                          <script type="module" src="{static("js/vite-refresh.js")}"></script>
+        imports_files += f""" <script type="module" 
+        src="http://localhost:5173/@vite/client"></script> <script 
+        type="module" src="{static(
+            "js/vite-refresh.js")}"></script>
                       """
 
     return mark_safe(imports_files)

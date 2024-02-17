@@ -6,7 +6,7 @@ from core.utils.console import Console
 
 
 @shared_task
-def SendConfirm(phone, code):
+def SendConfirm(phone: str | int, code: int) -> None:
     console = Console()
     try:
         service: SendService = SendService()
