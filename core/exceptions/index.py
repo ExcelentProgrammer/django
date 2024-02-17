@@ -22,7 +22,9 @@ class IsExpiredException(Exception):
 
 class BreakException(Exception):
 
-    def __init__(self, *args, message: str = None, data: dict | list = []):
-        self.args = list(args)
+    def __init__(self, *args, message: str = None, data=None):
+        if data is None:
+            data = []
+        self.args = args
         self.message = message
         self.data = data
