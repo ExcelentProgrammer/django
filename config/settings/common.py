@@ -1,5 +1,4 @@
 import importlib
-import logging
 import os.path
 from pathlib import Path
 
@@ -119,6 +118,7 @@ CONFIGS = [
     "config.conf.ckeditor",
     "config.conf.jwt",
     "config.conf.rest_framework",
+    "config.conf.logs",
 ]
 
 FACTORYS = [
@@ -129,12 +129,6 @@ FACTORYS = [
 SEEDERS = [
     "core.http.database.seeder.UserSeeder"
 ]
-
-logging.basicConfig(
-    filename=f"{BASE_DIR}/logs/django.log",
-    level=logging.DEBUG,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "resources/static"),
@@ -159,6 +153,7 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = "uz"
 LANGUAGE_CODE = 'uz'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Media files
+MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'http.User'
 

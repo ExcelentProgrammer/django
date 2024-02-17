@@ -1,6 +1,7 @@
 #####################
 # Version v1
 #####################
+import logging
 
 from rest_framework import viewsets, status
 from rest_framework.generics import ListAPIView
@@ -15,6 +16,7 @@ class PostListView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
     def dispatch(self, request, *args, **kwargs):
+        logging.error("salom")
         return super().dispatch(request, *args, **kwargs)
 
 
