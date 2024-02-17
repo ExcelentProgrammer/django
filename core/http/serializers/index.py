@@ -81,3 +81,7 @@ class FrontendTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = FrontendTranslation
         fields = ["key", "value"]
+
+
+class ResendSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=255)

@@ -1,6 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
 
 from core.enums import Codes, Messages
@@ -9,7 +10,7 @@ from core.exceptions import IsBlockException, SmsNotFoundException, \
 from core.http.models import PendingUser
 from core.http.serializers import RegisterSerializer, ConfirmSerializer, \
     ResetPasswordSerializer, \
-    ResetConfirmationSerializer
+    ResetConfirmationSerializer, ResendSerializer
 from core.services.BaseService import BaseService
 from core.services.sms import SmsService
 from core.services.user import UserService
@@ -21,6 +22,7 @@ class RegisterView(APIView, BaseService):
     """Register new user"""
 
     serializer_class = RegisterSerializer
+    throttle_classes = [UserRateThrottle]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -74,7 +76,7 @@ class ConfirmView(APIView, BaseService):
 
 class ResetPasswordView(APIView, BaseService):
     """Reset user password"""
-
+    throttle_classes = [UserRateThrottle]
     serializer_class = ResetPasswordSerializer
 
     def __init__(self, *args, **kwargs):
@@ -84,7 +86,9 @@ class ResetPasswordView(APIView, BaseService):
     def post(self, request: Request):
         ser = self.serializer_class(data=request.data)
         ser.is_valid(raise_exception=True)
-        return self.service.send_confirmation(ser.data.get('phone'))
+        self.service.send_confirmation(ser.data.get('phone'))
+        return ApiResponse.success(
+            _(Messages.SEND_MESSAGE) % {'phone': phone})
 
 
 class ResetConfirmationCodeView(APIView, BaseService):
@@ -119,3 +123,20 @@ class ResetConfirmationCodeView(APIView, BaseService):
                                      error_code=Codes.INVALID_OTP_ERROR)
         except Exception as e:
             return ApiResponse.error(e)
+
+
+class ResendView(APIView):
+    serializer_class = ResendSerializer
+    throttle_classes = [UserRateThrottle]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.service = UserService()
+
+    def post(self, request: Request):
+        ser = self.serializer_class(data=request.data)
+        ser.is_valid(raise_exception=True)
+        phone = ser.data.get('phone')
+        self.service.send_confirmation(phone)
+        return ApiResponse.success(
+            _(Messages.SEND_MESSAGE) % {'phone': phone})

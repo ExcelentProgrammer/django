@@ -11,10 +11,10 @@ class ExceptionMiddleware:
         try:
             response = self.get_response(request)
         except BreakException as e:
-            return self.process_exception(request, e)
+            return self.response(request, e)
         return response
 
-    def process_exception(self, request, e):
+    def response(self, request, e):
         error_data = {
             'message': e.message,
             "data": e.data,

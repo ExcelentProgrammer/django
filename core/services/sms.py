@@ -9,7 +9,8 @@ from core.http.tasks import SendConfirm
 class SmsService:
     @staticmethod
     def send_confirm(phone):
-        # TODO: Deploy this change when deploying -> code = random.randint(1000, 9999)
+        # TODO: Deploy this change when deploying -> code = random.randint(
+        #  1000, 9999)
         code = 1111
         sms_confirm, status = SmsConfirm.objects.get_or_create(phone=phone,
                                                                defaults={
