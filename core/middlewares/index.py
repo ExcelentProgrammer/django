@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http.response import JsonResponse
 
 from core.exceptions import BreakException
 
@@ -11,15 +11,16 @@ class ExceptionMiddleware:
         try:
             response = self.get_response(request)
         except BreakException as e:
-            return self.response(request, e)
+            return self.process_exception(request, e)
         return response
 
-    def response(self, request, e):
-        error_data = {
-            'message': e.message,
-            "data": e.data,
-            "errors": [
-                e.args.__str__(),
-            ]
-        }
-        return JsonResponse(error_data, status=500)
+    def process_exception(self, request, e):
+        if isinstance(e, BreakException):
+            error_data = {
+                'message': e.message,
+                "data": e.data,
+                "errors": [
+                    e.args.__str__(),
+                ]
+            }
+            return JsonResponse(error_data)

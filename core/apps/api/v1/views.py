@@ -1,13 +1,14 @@
 #####################
 # Version v1
 #####################
-import logging
 
 from rest_framework import viewsets, status
 from rest_framework.generics import ListAPIView
 
 from core.http.models import Post, FrontendTranslation
 from core.http.serializers import PostSerializer, FrontendTransactionSerializer
+from core.utils import dd
+from core.utils.exception import ResponseException
 from core.utils.response import ApiResponse
 
 
@@ -16,7 +17,6 @@ class PostListView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
     def dispatch(self, request, *args, **kwargs):
-        logging.error("salom")
         return super().dispatch(request, *args, **kwargs)
 
 
