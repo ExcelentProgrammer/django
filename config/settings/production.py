@@ -19,3 +19,7 @@ ALLOWED_HOSTS += [
     "192.168.100.26",
     "127.0.0.1"
 ]
+
+REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {
+    'user': '10/min',
+}
