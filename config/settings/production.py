@@ -1,4 +1,5 @@
 from .common import *
+from ..conf.rest_framework import REST_FRAMEWORK
 
 DATABASES = {
     'default': {

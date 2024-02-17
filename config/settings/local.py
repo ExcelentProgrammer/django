@@ -1,4 +1,5 @@
 from .common import *
+from ..conf.rest_framework import REST_FRAMEWORK
 
 DATABASES = {
     'default': {
@@ -44,3 +45,7 @@ ALLOWED_HOSTS += [
     "127.0.0.1",
     "192.168.100.26"
 ]
+
+REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {
+    'user': '10/min',
+}
