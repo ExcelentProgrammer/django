@@ -167,6 +167,8 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 CRISPY_TEMPLATE_PACK = 'tailwind'
 
+ALLOWED_HOSTS += env("ALLOWED_HOSTS").strip(",")
+
 #####################
 # Import another settings files
 #####################

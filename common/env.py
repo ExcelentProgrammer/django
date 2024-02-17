@@ -12,5 +12,6 @@ env = environ.Env(
     CACHE_TIME=(int, 180),
     OTP_EXPIRE_TIME=(int, 2),
     VITE_LIVE=(bool, False),
+    ALLOWED_HOSTS=(str, "localhost"),
     DJANGO_SETTINGS_MODULE=(str, "config.settings.local")
 )
