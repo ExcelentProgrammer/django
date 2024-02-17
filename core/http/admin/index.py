@@ -11,6 +11,8 @@ from core.http.resources.index import PostResource
 class PostAdmin(TabbedTranslationAdmin, ImportExportModelAdmin):
     fields: tuple = ('title', "desc", "image")
     resource_classes: list = [PostResource]
+    search_fields: list = ['title', 'desc']
+    list_filter = ['title']
     required_languages: tuple = ('uz',)
 
 
