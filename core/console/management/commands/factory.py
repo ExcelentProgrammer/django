@@ -1,7 +1,9 @@
 import importlib
+from typing import Any
 
 from django.conf import settings
 from django.core.management import BaseCommand
+from tqdm import tqdm
 
 
 class Command(BaseCommand):
@@ -14,7 +16,8 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR(message))
 
     def handle(self, *args, **options):
-        FACTORYS = settings.FACTORYS if hasattr(settings, "FACTORYS") else []
+        FACTORYS: list[Any] | Any = settings.FACTORYS if hasattr(
+            settings, "FACTORYS") else []
 
         if len(FACTORYS) == 0:
             self.print(
@@ -38,7 +41,10 @@ class Command(BaseCommand):
                 self.print("Model not found", "error")
                 return
             try:
+                self.print(f"Start factory: {factory}")
+                progress_bar = tqdm(total=count)
                 for i in range(count):
+                    progress_bar.update(1)
                     try:
                         data = my_class.handle()
                         model = my_class.model

@@ -128,8 +128,8 @@ CONFIGS = [
 ]
 
 FACTORYS = [
-    ("core.http.database.factory.PostFactory", 100),
-    ("core.http.database.factory.UserFactory", 1),
+    ("core.http.database.factory.PostFactory", 100000),
+    # ("core.http.database.factory.UserFactory", 1),
 ]
 
 SEEDERS = [
