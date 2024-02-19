@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import (
 )
 
 from core.apps.api.v1.auth.views import RegisterView, ConfirmView, \
-    ResetPasswordView, ResetConfirmationCodeView, ResendView
+    ResetPasswordView, ResetConfirmationCodeView, ResendView, MeView
 
 app_name = "auth"
 
@@ -19,5 +19,6 @@ urlpatterns = [
          name="reset-password"),
     path("confirm/reset/", ResetConfirmationCodeView.as_view(),
          name="reset-confirmation-code"),
-    path("resend/", ResendView.as_view(), name="resend")
+    path("resend/", ResendView.as_view(), name="resend"),
+    path("me/", MeView.as_view(), name="me"),
 ]

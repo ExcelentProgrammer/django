@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.views import APIView
@@ -10,7 +11,7 @@ from core.exceptions import IsBlockException, SmsNotFoundException, \
 from core.http.models import PendingUser
 from core.http.serializers import RegisterSerializer, ConfirmSerializer, \
     ResetPasswordSerializer, \
-    ResetConfirmationSerializer, ResendSerializer
+    ResetConfirmationSerializer, ResendSerializer, UserSerializer
 from core.services.BaseService import BaseService
 from core.services.sms import SmsService
 from core.services.user import UserService
@@ -141,3 +142,11 @@ class ResendView(APIView):
         self.service.send_confirmation(phone)
         return ApiResponse.success(
             _(Messages.SEND_MESSAGE) % {'phone': phone})
+
+
+class MeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request: Request):
+        user = request.user
+        return ApiResponse.success(data=UserSerializer(user).data)
