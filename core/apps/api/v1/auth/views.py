@@ -1,3 +1,5 @@
+from typing import Type
+
 from django.utils.translation import gettext_lazy as _
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
@@ -78,7 +80,7 @@ class ConfirmView(APIView, BaseService):
 class ResetPasswordView(APIView, BaseService):
     """Reset user password"""
     throttle_classes = [UserRateThrottle]
-    serializer_class = ResetPasswordSerializer
+    serializer_class: Type[ResetPasswordSerializer] = ResetPasswordSerializer
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
