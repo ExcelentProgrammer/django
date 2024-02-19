@@ -1,7 +1,7 @@
 from django.utils.translation import gettext as _
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from core.enums import Messages
+from core.enums import Messages, Codes
 from core.exceptions import IsBlockException, SmsNotFoundException, \
     IsExpiredException, InvalidConfirmationCodeException
 from core.http.models import PendingUser, User
