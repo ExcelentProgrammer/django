@@ -86,8 +86,8 @@ class ResetPasswordView(APIView, BaseService):
 
     def post(self, request: Request):
         ser = self.serializer_class(data=request.data)
-        phone = ser.data.get('phone')
         ser.is_valid(raise_exception=True)
+        phone = ser.data.get('phone')
         self.service.send_confirmation(phone)
         return ApiResponse.success(
             _(Messages.SEND_MESSAGE) % {'phone': phone})
