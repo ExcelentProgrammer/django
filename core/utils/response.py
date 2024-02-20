@@ -1,6 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 
+from core.exceptions import BreakException
+
 
 class ApiResponse:
     @staticmethod
@@ -17,7 +19,14 @@ class ApiResponse:
 
     @staticmethod
     def error(message="", data=None, error_code=0,
-              status_code=status.HTTP_400_BAD_REQUEST):
+              status_code=status.HTTP_400_BAD_REQUEST, exception=None):
+
+        #####################
+        # Ignore BreakException
+        #####################
+        if isinstance(exception, BreakException):
+            raise exception
+
         if data is None:
             data = []
         response = {

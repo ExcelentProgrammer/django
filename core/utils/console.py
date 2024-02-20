@@ -5,14 +5,28 @@ from django.core.management import BaseCommand
 
 
 class Console(BaseCommand):
-    def success(self, message):
-        self.stdout.write(self.style.SUCCESS(message))
 
+    @staticmethod
+    def get_stdout():
+        base_command = BaseCommand()
+        return base_command.stdout
+
+    @staticmethod
+    def get_style():
+        base_command = BaseCommand()
+        return base_command.style
+
+    @staticmethod
+    def success(message):
+        Console.get_stdout().write(Console.get_style().SUCCESS(message))
+
+    @staticmethod
     def error(self, message):
-        self.stdout.write(self.style.ERROR(message))
+        Console.get_stdout().write(Console.get_style().ERROR(message))
 
+    @staticmethod
     def log(self, message):
-        self.stdout.write(self.style.ERROR(
+        Console.get_stdout().write(Console.get_style().ERROR(
             "\n====================\n{}\n====================\n".format(
                 message)))
 
@@ -50,3 +64,4 @@ class BaseMake(BaseCommand):
             file.write(stub)
             file.close()
         self.console.success(f"{self.name} created")
+
