@@ -5,7 +5,6 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
 from common.env import env
-from core.utils.console import Console
 
 BASE_DIR = Path(
     __file__).resolve().parent.parent.parent  # har bir parent bitta papka
@@ -127,6 +126,12 @@ CONFIGS = [
     "config.conf.logs",
 ]
 
+#####################
+# Date formats
+#####################
+DATE_FORMAT = "d.m.y"
+TIME_FORMAT = 'H:i:s'
+
 FACTORYS = [
     ("core.http.database.factory.PostFactory", 100000),
     # ("core.http.database.factory.UserFactory", 1),
@@ -169,7 +174,6 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CRISPY_TEMPLATE_PACK = 'tailwind'
 
 ALLOWED_HOSTS += env("ALLOWED_HOSTS").split(",")
-
 
 #####################
 # Import another settings files
