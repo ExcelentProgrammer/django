@@ -131,6 +131,8 @@ CONFIGS = [
 #####################
 DATE_FORMAT = "d.m.y"
 TIME_FORMAT = 'H:i:s'
+DATE_INPUT_FORMATS = ['%d.%m.%Y', "%Y.%d.%m", "%Y.%d.%m"]
+
 
 FACTORYS = [
     ("core.http.database.factory.PostFactory", 100000),
