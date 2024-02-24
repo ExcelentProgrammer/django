@@ -105,8 +105,7 @@ INSTALLED_APPS += [
     "drf_yasg",
     "crispy_forms",
     "import_export",
-    "ckeditor",
-    "ckeditor_uploader",
+    "django_ckeditor_5",
 
     #####################
     # My apps

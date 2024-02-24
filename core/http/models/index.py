@@ -1,11 +1,10 @@
-from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    desc = RichTextField()
+    desc = models.TextField()
     image = models.ImageField(upload_to='posts/', blank=True)
 
     def __str__(self):

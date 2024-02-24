@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
 
+from core.http.forms.admin import PostAdminForm
 from core.http.models import Post, User, SmsConfirm, FrontendTranslation
 from core.http.resources import FrontendTranslationResource
 from core.http.resources.index import PostResource
@@ -14,6 +15,7 @@ class PostAdmin(TabbedTranslationAdmin, ImportExportModelAdmin):
     search_fields: list = ['title', 'desc']
     list_filter = ['title']
     required_languages: tuple = ('uz',)
+    form = PostAdminForm
 
 
 class CustomUserAdmin(UserAdmin):
