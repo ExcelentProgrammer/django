@@ -1,29 +1,16 @@
 from rest_framework.exceptions import APIException
 
 
-class InvalidConfirmationCodeException(Exception):
-    def __init__(self, message):
-        self.message = message
+class SmsException(Exception):
+    """Sms exception"""
 
-
-class IsBlockException(Exception):
-
-    def __init__(self, message, expired):
-        self.message = message
-        self.expired = expired
-
-
-class SmsNotFoundException(Exception):
-    def __init__(self, message):
-        self.message = message
-
-
-class IsExpiredException(Exception):
-    def __init__(self, message):
-        self.message = message
+    def __init__(self, message, **kwargs):
+        super().__init__(message)
+        self.kwargs = kwargs
 
 
 class BreakException(Exception):
+    """Break exception"""
 
     def __init__(self, *args, message: str = None, data=None):
         if data is None:
@@ -34,6 +21,8 @@ class BreakException(Exception):
 
 
 class MyApiException(APIException):
+    """My API Exception for API exceptions status code edit"""
+
     status_code = 400
 
     def __init__(self, message, status_code):

@@ -2,8 +2,7 @@ from django.utils.translation import gettext as _
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from core.enums import Messages, Codes
-from core.exceptions import IsBlockException, SmsNotFoundException, \
-    IsExpiredException, InvalidConfirmationCodeException
+from core.exceptions import SmsException
 from core.http.models import PendingUser, User
 from core.services.base_service import BaseService
 from core.services.sms import SmsService
@@ -37,9 +36,8 @@ class UserService(BaseService):
         try:
             self.sms_service.send_confirm(phone)
             return True
-        except (IsBlockException, SmsNotFoundException, IsExpiredException,
-                InvalidConfirmationCodeException) as e:
-            ResponseException(e.message, data={"expired": e.expired})
+        except SmsException as e:
+            ResponseException(e, data={"expired": e.kwargs.get("expired")})
         except Exception as e:
             ResponseException(e)
 

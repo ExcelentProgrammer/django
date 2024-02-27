@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
-from core.exceptions import InvalidConfirmationCodeException, IsBlockException, \
-    IsExpiredException, SmsNotFoundException
+from core.exceptions import SmsException
 from core.http.models import SmsConfirm
 from core.http.tasks import SendConfirm
 
@@ -21,8 +20,8 @@ class SmsService:
 
         if sms_confirm.resend_unlock_time is not None:
             expired = sms_confirm.interval(sms_confirm.resend_unlock_time)
-            exception = IsBlockException(
-                f"Resend blocked, try again in {expired}", expired)
+            exception = SmsException(
+                f"Resend blocked, try again in {expired}", expired=expired)
             raise exception
 
         sms_confirm.code = code
@@ -43,16 +42,16 @@ class SmsService:
         sms_confirm = SmsConfirm.objects.filter(phone=phone).first()
 
         if sms_confirm is None:
-            raise SmsNotFoundException("Invalid confirmation code")
+            raise SmsException("Invalid confirmation code")
 
         sms_confirm.sync_limits()
 
         if sms_confirm.is_expired():
-            raise IsExpiredException("Time for confirmation has expired")
+            raise SmsException("Time for confirmation has expired")
 
         if sms_confirm.is_block():
             expired = sms_confirm.interval(sms_confirm.unlock_time)
-            raise IsBlockException(f"Try again in {expired}")
+            raise SmsException(f"Try again in {expired}")
 
         if sms_confirm.code == code:
             sms_confirm.delete()
@@ -61,4 +60,4 @@ class SmsService:
         sms_confirm.try_count += 1
         sms_confirm.save()
 
-        raise InvalidConfirmationCodeException("Invalid confirmation code")
+        raise SmsException("Invalid confirmation code")

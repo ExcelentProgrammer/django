@@ -14,6 +14,4 @@ def SendConfirm(phone, code):
         Console.success(
             "Success: {phone}-{code}".format(phone=phone, code=code))
     except Exception as e:
-        Console.error(
-            "Error: {phone}-{code}\n\n{error}".format(phone=phone, code=code,
-                                                      error=e))
+        Console.error("Error: {phone}-{code}\n\n{error}".format(phone=phone, code=code, error=e))

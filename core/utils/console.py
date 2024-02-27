@@ -21,11 +21,11 @@ class Console(BaseCommand):
         Console.get_stdout().write(Console.get_style().SUCCESS(message))
 
     @staticmethod
-    def error(self, message):
+    def error(message):
         Console.get_stdout().write(Console.get_style().ERROR(message))
 
     @staticmethod
-    def log(self, message):
+    def log(message):
         Console.get_stdout().write(Console.get_style().ERROR(
             "\n====================\n{}\n====================\n".format(
                 message)))
