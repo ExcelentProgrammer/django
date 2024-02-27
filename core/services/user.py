@@ -5,7 +5,7 @@ from core.enums import Messages, Codes
 from core.exceptions import IsBlockException, SmsNotFoundException, \
     IsExpiredException, InvalidConfirmationCodeException
 from core.http.models import PendingUser, User
-from core.services.BaseService import BaseService
+from core.services.base_service import BaseService
 from core.services.sms import SmsService
 from core.utils.exception import ResponseException
 

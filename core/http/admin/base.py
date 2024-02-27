@@ -6,7 +6,7 @@ from modeltranslation.admin import TabbedTranslationAdmin
 from core.http.forms.admin import PostAdminForm
 from core.http.models import Post, User, SmsConfirm, FrontendTranslation
 from core.http.resources import FrontendTranslationResource
-from core.http.resources.index import PostResource
+from core.http.resources.base import PostResource
 
 
 class PostAdmin(TabbedTranslationAdmin, ImportExportModelAdmin):

@@ -14,7 +14,7 @@ from core.http.models import PendingUser
 from core.http.serializers import RegisterSerializer, ConfirmSerializer, \
     ResetPasswordSerializer, \
     ResetConfirmationSerializer, ResendSerializer, UserSerializer
-from core.services.BaseService import BaseService
+from core.services.base_service import BaseService
 from core.services.sms import SmsService
 from core.services.user import UserService
 from core.utils.exception import ResponseException

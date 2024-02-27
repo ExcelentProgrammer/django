@@ -1,2 +1,2 @@
-from .index import *
+from .base import *
 from .user import *

@@ -1,1 +1,1 @@
-from .index import *
+from .base import SendConfirm

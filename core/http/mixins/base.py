@@ -6,7 +6,6 @@ from core.utils.response import ApiResponse
 
 
 class ResponseMixin:
-
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
 
