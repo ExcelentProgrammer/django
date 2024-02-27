@@ -19,7 +19,7 @@ class ApiResponse:
 
     @staticmethod
     def error(message="", data=None, error_code=0,
-              status_code=status.HTTP_400_BAD_REQUEST, exception=None):
+              status_code=status.HTTP_400_BAD_REQUEST, exception=None, **kwargs):
 
         #####################
         # Ignore BreakException
@@ -33,6 +33,7 @@ class ApiResponse:
             "success": False,
             "message": message,
             "data": data,
-            "error_code": error_code
+            "error_code": error_code,
+            **kwargs
         }
         raise MyApiException(response, status_code)
