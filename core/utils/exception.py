@@ -1,11 +1,15 @@
 from rest_framework import status
-from rest_framework.exceptions import APIException
+
+from core.exceptions import BreakException, MyApiException
 
 
 class ResponseException:
 
     def __init__(self, message="", data=None, error_code=0,
-                 status_code=status.HTTP_400_BAD_REQUEST):
+                 status_code=status.HTTP_400_BAD_REQUEST, exception=None):
+        if isinstance(exception, BreakException):
+            raise exception
+
         if data is None:
             data = []
         response = {
@@ -14,4 +18,4 @@ class ResponseException:
             "data": data,
             "error_code": error_code
         }
-        raise APIException(response, status_code)
+        raise MyApiException(response, status_code)

@@ -1,3 +1,6 @@
+from rest_framework.exceptions import APIException
+
+
 class InvalidConfirmationCodeException(Exception):
     def __init__(self, message):
         self.message = message
@@ -28,3 +31,11 @@ class BreakException(Exception):
         self.args = args
         self.message = message
         self.data = data
+
+
+class MyApiException(APIException):
+    status_code = 400
+
+    def __init__(self, message, status_code):
+        super().__init__(message)
+        self.status_code = status_code

@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 
-from core.exceptions import BreakException
+from core.exceptions import BreakException, MyApiException
 
 
 class ApiResponse:
@@ -35,4 +35,4 @@ class ApiResponse:
             "data": data,
             "error_code": error_code
         }
-        return Response(response, status_code)
+        raise MyApiException(response, status_code)
