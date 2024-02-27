@@ -6,10 +6,12 @@ class UserFactory(BaseFaker):
     model = User
 
     def handle(self):
+        """Factory method"""
+
         return {
-            "first_name": self.faker.first_name(),
-            "username": self.faker.user_name(),
-            "phone": self.faker.phone_number()
+            "first_name": self.faker.first_name(),  # First name
+            "username": self.faker.user_name(),  # User name
+            "phone": self.faker.phone_number()  # phone
         }
 
 

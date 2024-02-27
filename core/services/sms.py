@@ -8,30 +8,29 @@ from core.http.tasks import SendConfirm
 class SmsService:
     @staticmethod
     def send_confirm(phone):
-        # TODO: Deploy this change when deploying -> code = random.randint(
-        #  1000, 9999)
+
+        #####################
+        # TODO: Deploy this change when deploying -> code = random.randint(1000, 9999)
+        #####################
         code = 1111
-        sms_confirm, status = SmsConfirm.objects.get_or_create(phone=phone,
-                                                               defaults={
-                                                                   "code": code
-                                                               })
+
+        sms_confirm, status = SmsConfirm.objects.get_or_create(
+            phone=phone, defaults={"code": code}
+        )
 
         sms_confirm.sync_limits()
 
         if sms_confirm.resend_unlock_time is not None:
             expired = sms_confirm.interval(sms_confirm.resend_unlock_time)
-            exception = SmsException(
-                f"Resend blocked, try again in {expired}", expired=expired)
+            exception = SmsException(f"Resend blocked, try again in {expired}", expired=expired)
             raise exception
 
         sms_confirm.code = code
         sms_confirm.try_count = 0
         sms_confirm.resend_count += 1
         sms_confirm.phone = phone
-        sms_confirm.expired_time = datetime.now() + timedelta(
-            seconds=SmsConfirm.SMS_EXPIRY_SECONDS)
-        sms_confirm.resend_unlock_time = datetime.now() + timedelta(
-            seconds=SmsConfirm.SMS_EXPIRY_SECONDS)
+        sms_confirm.expired_time = datetime.now() + timedelta(seconds=SmsConfirm.SMS_EXPIRY_SECONDS)
+        sms_confirm.resend_unlock_time = datetime.now() + timedelta(seconds=SmsConfirm.SMS_EXPIRY_SECONDS)
         sms_confirm.save()
 
         SendConfirm.delay(phone, code)
