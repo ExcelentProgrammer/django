@@ -13,6 +13,7 @@ env = environ.Env(
     OTP_EXPIRE_TIME=(int, 2),
     VITE_LIVE=(bool, False),
     ALLOWED_HOSTS=(str, "localhost"),
+    CSRF_TRUSTED_ORIGINS=(str, "localhost"),
     DJANGO_SETTINGS_MODULE=(str, "config.settings.local"),
     CACHE_TIMEOUT=(bool, 120)
 )
