@@ -1,8 +1,20 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from polymorphic.models import PolymorphicModel
 
 
-class Post(models.Model):
+class Comment(models.Model):
+    text = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.text
+
+
+class BaseComment(PolymorphicModel):
+    comments = models.ManyToManyField(Comment)
+
+
+class Post(BaseComment):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     image = models.ImageField(upload_to='posts/', blank=True)
