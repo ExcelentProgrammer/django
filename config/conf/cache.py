@@ -7,3 +7,6 @@ CACHES = {
         "TIMEOUT": env("CACHE_TIMEOUT")
     },
 }
+
+CACHE_MIDDLEWARE_SECONDS = env("CACHE_TIMEOUT")
+
