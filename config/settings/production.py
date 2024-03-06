@@ -11,10 +11,7 @@ DATABASES = {
     }
 }
 
-MIDDLEWARE += [
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-]
+MIDDLEWARE += []
 
 ALLOWED_HOSTS += [
     "192.168.100.26",

@@ -15,5 +15,6 @@ env = environ.Env(
     ALLOWED_HOSTS=(str, "localhost"),
     CSRF_TRUSTED_ORIGINS=(str, "localhost"),
     DJANGO_SETTINGS_MODULE=(str, "config.settings.local"),
-    CACHE_TIMEOUT=(int, 120)
+    CACHE_TIMEOUT=(int, 120),
+    CACHE_ENABLED=(bool, False)
 )
