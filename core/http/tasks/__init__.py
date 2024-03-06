@@ -1,4 +1,4 @@
 #####################
 # Celery tasks
 #####################
-from .base import SendConfirm
+from .core import SendConfirm

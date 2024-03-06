@@ -1,7 +1,7 @@
 from modeltranslation.translator import translator
 
 from core.http.models import Post, FrontendTranslation
-from core.http.translation.base import PostTranslationOption, \
+from core.http.translation.core import PostTranslationOption, \
     FrontendTranslationOption
 
 translator.register(Post, PostTranslationOption)

@@ -11,3 +11,5 @@ class UtilsTest(unittest.TestCase):
 
         result = Cache.remember(mock_func, "test")
         self.assertEqual(result, 'test')
+
+

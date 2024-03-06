@@ -2,5 +2,5 @@
 # Database insert face data
 #####################
 
-from .index import PostFactory
-from .index import UserFactory
+from .core import PostFactory
+from .core import UserFactory

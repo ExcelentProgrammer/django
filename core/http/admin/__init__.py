@@ -2,4 +2,4 @@
 # Base admin file
 #####################
 
-from .base import *
+from .core import *
