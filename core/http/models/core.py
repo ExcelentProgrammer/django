@@ -23,7 +23,7 @@ class Post(BaseComment):
         return self.title
 
 
-class FrontendTranslation(models.Model):
+class FrontendTranslation(BaseComment):
     key = models.CharField(max_length=255, unique=True)
     value = models.TextField()
 

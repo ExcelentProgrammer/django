@@ -30,10 +30,17 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['phone', "first_name", "last_name"]
 
 
+class FrontendInline(TabularInline):
+    model = FrontendTranslation.comments.through
+    fields = ['comment']
+    extra = 1
+
+
 class FrontendTranslationAdmin(TabbedTranslationAdmin, ImportExportModelAdmin):
     fields: tuple = ("key", "value")
     required_languages: tuple = ('uz',)
     list_display = ["key", "value"]
+    inlines = [FrontendInline]
 
     resource_classes = [FrontendTranslationResource]
 

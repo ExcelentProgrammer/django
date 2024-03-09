@@ -152,6 +152,13 @@ STATICFILES_DIRS = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+PAYCOM_SETTINGS = {
+    "KASSA_ID": "1111",
+    "ACCOUNTS": {
+        "KEY": "1234",
+    },
+    "TOKEN": "1111"
+}
 STATIC_ROOT = os.path.join(BASE_DIR, "resources/staticfiles")
 VITE_APP_DIR = os.path.join(BASE_DIR, "resources/static/vite")
 
