@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     'use strict';
 
     let relatedModalCounter = 0;
@@ -17,7 +17,7 @@
 
         $('.related-modal-' + relatedModalCounter).modal('hide');
 
-        relatedModalCounter -= 1;
+        relatedModalCounter-=1;
     }
 
     // create the function that will show the modal
@@ -28,7 +28,7 @@
             return;
         }
 
-        relatedModalCounter += 1;
+        relatedModalCounter+=1;
 
 
         $.showModal({
@@ -37,13 +37,13 @@
             backdrop: false,
             modalDialogClass: "modal-dialog-centered modal-lg",
             modalClass: "fade modal-wide related-modal-" + relatedModalCounter,
-            onDispose: function () {
+            onDispose: function() {
                 // add focus to the previous modal (if exists) when the current one is closed
                 var lastModal = $("div[class*='related-modal-']").last();
                 if (lastModal) {
-                    lastModal.focus();
+                        lastModal.focus();
+                    }
                 }
-            }
         });
 
         const modalEl = $("div[class*='related-modal-']");
@@ -52,7 +52,7 @@
         if (e.data.lookup === true) {
             // set current window as iframe opener because
             // the callback is called on the opener window
-            iframeEl.on('load', function () {
+            iframeEl.on('load', function() {
                 const iframeObj = $(this).get(0);
                 const iframeWindow = iframeObj.contentWindow;
                 iframeWindow.opener = window;
@@ -74,7 +74,7 @@
             if (secondLastIframe.length) {
                 documentContext = secondLastIframe.contents();
 
-                // else get main parent document
+            // else get main parent document
             } else {
                 documentContext = $(win.parent.document);
             }
@@ -82,7 +82,7 @@
             // find and select widget from the specified document context
             widgetEl = documentContext.find('#' + widgetName);
 
-            // else select widget from the main document
+        // else select widget from the main document
         } else {
             widgetEl = $('#' + widgetName);
         }
@@ -179,7 +179,7 @@
         presentRelatedObjectModalOnClickOn('a.dynamic_raw_id-related-lookup', true);
     }
 
-    $(document).ready(function () {
+    $(document).ready(function(){
         init()
     });
 

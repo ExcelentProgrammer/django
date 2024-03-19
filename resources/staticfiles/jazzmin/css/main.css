@@ -21,7 +21,7 @@ div.inline-related {
 .card-body.p-0 .table tfoot > tr > td:first-of-type,
 .card-body.p-0 .table tbody > tr > th:first-of-type,
 .card-body.p-0 .table tbody > tr > td:first-of-type {
-    padding-left: 0.75rem;
+  padding-left: 0.75rem;
 }
 
 .card-body.p-0 .table thead > tr > th:last-of-type,
@@ -30,7 +30,7 @@ div.inline-related {
 .card-body.p-0 .table tfoot > tr > td:last-of-type,
 .card-body.p-0 .table tbody > tr > th:last-of-type,
 .card-body.p-0 .table tbody > tr > td:last-of-type {
-    padding-right: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .card-body.p-0 .table thead > tr > th:first-child,
@@ -39,7 +39,7 @@ div.inline-related {
 .card-body.p-0 .table tfoot > tr > td:first-child,
 .card-body.p-0 .table tbody > tr > th:first-child,
 .card-body.p-0 .table tbody > tr > td:first-child {
-    padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .card-body.p-0 .table thead > tr > th:last-child,
@@ -48,11 +48,11 @@ div.inline-related {
 .card-body.p-0 .table tfoot > tr > td:last-child,
 .card-body.p-0 .table tbody > tr > th:last-child,
 .card-body.p-0 .table tbody > tr > td:last-child {
-    padding-right: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 [class*=sidebar-dark-] .nav-header {
-    color: rgb(255, 255, 255, 0.3);
+    color: rgb(255,255,255,0.3);
     margin-top: 1rem;
 }
 
@@ -88,7 +88,7 @@ td.delete input {
     margin: 10px;
 }
 
-tr.djn-tr > .original {
+tr.djn-tr>.original {
     padding-left: 20px;
 }
 
@@ -207,7 +207,8 @@ table.dataTable thead .sorting_desc_disabled::after {
 .form-group div .vLargeTextField,
 .form-group div .vURLField,
 .form-group div .vBigIntegerField,
-.form-group div input[type="text"] {
+.form-group div input[type="text"]
+{
     display: block;
     width: 100%;
 }
@@ -221,7 +222,8 @@ table.dataTable thead .sorting_desc_disabled::after {
 .vDateField,
 .vTimeField,
 input[type="number"],
-input[type="text"] {
+input[type="text"]
+{
     height: calc(2.25rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -544,7 +546,8 @@ input[type="text"] {
 .selector select {
     padding: 0 10px;
     margin: 0 0 10px;
-    /*border-radius: 0 0 4px 4px;*/;
+    /*border-radius: 0 0 4px 4px;*/
+;
 }
 
 .selector-add,
@@ -696,7 +699,7 @@ body.no-sidebar .main-header {
     margin-bottom: 0;
 }
 
-.inline-related .card-header > span {
+.inline-related .card-header>span {
     float: right;
 }
 
@@ -742,7 +745,7 @@ body.no-sidebar .main-header {
     margin: 0;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
     content: "\203A";
 }
 
@@ -793,7 +796,7 @@ form ul.inline li {
     padding-right: 7px;
 }
 
-.content-wrapper > .content {
+.content-wrapper>.content {
     padding: 1rem 2rem;
 }
 
@@ -808,7 +811,7 @@ form ul.inline li {
 }
 
 .page-actions > a {
-    margin-right: 0.25rem;
+    margin-right:0.25rem;
     margin-left: 0.25rem;
 }
 
@@ -836,7 +839,6 @@ a.inline-deletelink {
     border: 1px solid #dc3545;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-
 /* end stacked inlines */
 
 /* Support for django-mptt */
@@ -844,10 +846,9 @@ a.inline-deletelink {
     width: calc(40px + 2.25rem);
 }
 
-#result_list .field-tree_actions > div {
+#result_list .field-tree_actions>div {
     margin-top: 0;
 }
-
 /* End support for django-mptt */
 
 /* modal tweaks */
@@ -873,7 +874,6 @@ iframe.related-iframe {
     -ms-filter: blur(1px);
     filter: blur(1px);
 }
-
 /* end modal tweaks */
 
 .control-sidebar {
@@ -892,7 +892,6 @@ body.jazzmin-login-page {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .callout {
     color: black;
 }
@@ -906,26 +905,21 @@ body.jazzmin-login-page {
     /* May inherit scroll, so we need to explicitly hide */
     overflow-x: hidden;
 }
-
 /* calculate height to fit content, we don't to enable scrolling if the content fits */
 .layout-fixed #jazzy-sidebar .sidebar {
     height: auto !important;
 }
-
 /* Hide scrollbar */
 .layout-fixed #jazzy-sidebar {
     scrollbar-width: none;
 }
-
 .layout-fixed #jazzy-sidebar::-webkit-scrollbar {
     width: 0;
 }
-
 /* nav-item will overflow container in width if scrollbar is visible */
 #jazzy-sidebar .nav-sidebar > .nav-item {
     width: 100%;
 }
-
 /* tweeks for django-filer*/
 .navigator-top-nav + #content-main {
     float: left;

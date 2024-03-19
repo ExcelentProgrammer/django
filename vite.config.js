@@ -13,6 +13,7 @@ export default defineConfig({
             input: {
                 appJs: resolve("./resources/static/js/app.js"),
                 appCss: resolve("./resources/static/css/app.css"),
+                outCss: resolve("./resources/static/css/output.css")
             }
         }
     }

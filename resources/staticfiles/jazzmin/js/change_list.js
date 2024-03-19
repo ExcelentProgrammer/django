@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     'use strict';
 
     $.fn.search_filters = function () {
@@ -25,10 +25,7 @@
         $ele.search_filters();
         $ele.each(function () {
             const $this = $(this);
-            $this.select2({
-                width: '100%',
-                minimumInputLength: getMinimuInputLength($this)
-            });
+            $this.select2({  width: '100%', minimumInputLength: getMinimuInputLength($this) });
         });
 
         // Use select2 for mptt dropdowns
@@ -59,7 +56,7 @@
         $('.related-lookup').append('<i class="fa fa-search"></i>')
 
         // Allow for styling of selects
-        $('.actions select').addClass('form-control').select2({width: 'element'});
+        $('.actions select').addClass('form-control').select2({ width: 'element' });
 
         searchFilters();
     });

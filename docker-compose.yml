@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8001:8000"
     depends_on:
       - db
       - redis
@@ -17,12 +17,8 @@ services:
       POSTGRES_DB: django
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 2309
-    ports:
-      - "5432:5433"
   redis:
     image: "redis"
-    ports:
-      - "6379:6380"
   celery:
     build: .
     command: celery -A config worker --loglevel=info

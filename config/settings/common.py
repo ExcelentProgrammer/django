@@ -180,8 +180,8 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'http.User'
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = env("REDIS_URL")
+CELERY_RESULT_BACKEND = env("REDIS_URL")
 
 CRISPY_TEMPLATE_PACK = 'tailwind'
 

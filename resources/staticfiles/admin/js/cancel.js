@@ -1,11 +1,11 @@
-(function ($) {
+(function($) {
     'use strict';
 
-    $(document).ready(function () {
-        $('.cancel-link').click(function (e) {
+    $(document).ready(function() {
+        $('.cancel-link').click(function(e) {
             e.preventDefault();
             const parentWindow = window.parent;
-            if (parentWindow && typeof (parentWindow.dismissRelatedObjectModal) === 'function' && parentWindow !== window) {
+            if (parentWindow && typeof(parentWindow.dismissRelatedObjectModal) === 'function' && parentWindow !== window) {
                 parentWindow.dismissRelatedObjectModal();
             } else {
                 // fallback to default behavior

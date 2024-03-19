@@ -83,13 +83,13 @@
         $("#codeBox").on('show.bs.modal', function () {
             $('.modal-body code', this).html(
                 'JAZZMIN_UI_TWEAKS = ' + JSON.stringify(
-                    window.ui_changes, null, 4
+                window.ui_changes, null, 4
                 ).replace(
-                    /true/g, 'True'
+                /true/g, 'True'
                 ).replace(
-                    /false/g, 'False'
+                /false/g, 'False'
                 ).replace(
-                    /null/g, 'None'
+                /null/g, 'None'
                 )
             );
         });
@@ -130,8 +130,8 @@
 
             $themeCSS.attr('href', currentSrc.replace(currentTheme, newTheme));
 
-            $body.removeClass(function (index, className) {
-                return (className.match(/(^|\s)theme-\S+/g) || []).join(' ');
+            $body.removeClass (function (index, className) {
+                return (className.match (/(^|\s)theme-\S+/g) || []).join(' ');
             });
             $body.addClass('theme-' + newTheme);
 
@@ -176,9 +176,7 @@
     function navBarTweaksListeners() {
         $('#navbar-fixed').on('click', function () {
             $body.toggleClass('layout-navbar-fixed');
-            if (this.checked) {
-                $('#layout-boxed:checked').click();
-            }
+            if (this.checked) {$('#layout-boxed:checked').click();}
             window.ui_changes['navbar_fixed'] = this.checked;
         });
 
@@ -270,10 +268,7 @@
                 window.ui_changes['brand_small_text'] = false;
                 window.ui_changes['footer_small_text'] = false;
                 window.ui_changes['sidebar_nav_small_text'] = false;
-                $smallTextControls.prop({
-                    'checked': false,
-                    'disabled': 'disabled'
-                });
+                $smallTextControls.prop({'checked': false, 'disabled': 'disabled'});
             } else {
                 $smallTextControls.prop({'checked': false, 'disabled': ''});
             }
@@ -291,7 +286,7 @@
     }
 
     function buttonStyleListeners() {
-        buttons.forEach(function (btn) {
+        buttons.forEach(function(btn) {
             $("#jazzmin-btn-style-" + btn).on('change', function () {
                 const btnClasses = ['btn-' + btn, 'btn-outline-' + btn];
                 const selectorClasses = '.btn-' + btn + ', .btn-outline-' + btn;
@@ -320,7 +315,7 @@
         $('#navbar-variants div, #accent-colours div, #dark-sidebar-variants div, #light-sidebar-variants div, #brand-logo-variants div').addClass('inactive');
 
         // set button styles
-        buttons.forEach(function (btn) {
+        buttons.forEach(function(btn) {
             $("#jazzmin-btn-style-" + btn).val(window.ui_changes['button_classes'][btn]);
         });
 

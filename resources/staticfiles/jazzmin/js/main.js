@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     'use strict';
 
     function setCookie(key, value) {
@@ -38,8 +38,7 @@
             $link.addClass('active');
         } else if ($parent_link.length) {
             $parent_link.addClass('active');
-        }
-        ;
+        };
 
         const $a_active = $('a.nav-link.active');
         const $main_li_parent = $a_active.closest('li.nav-item.has-treeview');
@@ -62,8 +61,7 @@
         const $changeListTable = $('#changelist .results table');
         if ($changeListTable.length && !$changeListTable.hasClass('table table-striped')) {
             $changeListTable.addClass('table table-striped');
-        }
-        ;
+        };
     });
 
 })(jQuery);
