@@ -4,10 +4,10 @@ from django.contrib.auth.admin import UserAdmin
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
 
-from core.http.forms.admin import PostAdminForm
+from core.http.forms import PostAdminForm
 from core.http.models import Post, User, SmsConfirm, FrontendTranslation, Comment
 from core.http.resources import FrontendTranslationResource
-from core.http.resources.core import PostResource
+from core.http.resources import PostResource
 
 
 class PostInline(TabularInline):
