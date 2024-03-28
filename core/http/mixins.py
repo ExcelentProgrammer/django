@@ -1,3 +1,6 @@
+#####################
+# Base Custom mixins
+#####################
 from rest_framework.exceptions import ValidationError
 
 from core.enums import Codes

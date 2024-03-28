@@ -1,3 +1,6 @@
+#####################
+# Base celery tasks
+#####################
 from celery import shared_task
 from django.utils.translation import gettext as _
 

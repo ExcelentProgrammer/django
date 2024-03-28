@@ -1,3 +1,7 @@
+#####################
+# Project base django admin register classes
+#####################
+
 from django.contrib import admin
 from django.contrib.admin import TabularInline
 from django.contrib.auth.admin import UserAdmin

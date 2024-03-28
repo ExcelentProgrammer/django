@@ -1,3 +1,7 @@
+#####################
+# Django model translation Resources
+#####################
+
 from modeltranslation.translator import TranslationOptions, translator
 
 from core.http.models import Post, FrontendTranslation

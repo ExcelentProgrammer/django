@@ -1,3 +1,8 @@
+################################
+# Django django-import-export resources
+################################
+
+
 from import_export import resources
 
 from core.http.models import Post, FrontendTranslation
