@@ -5,12 +5,13 @@
 from datetime import datetime, timedelta, timezone
 
 import math
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from polymorphic.models import PolymorphicModel
 
 from common.env import env
+from core.http.managers import UserManager
 
 
 class User(AbstractUser):
