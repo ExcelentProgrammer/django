@@ -16,5 +16,7 @@ env = environ.Env(
     CSRF_TRUSTED_ORIGINS=(str, "localhost"),
     DJANGO_SETTINGS_MODULE=(str, "config.settings.local"),
     CACHE_TIMEOUT=(int, 120),
-    CACHE_ENABLED=(bool, False)
+    CACHE_ENABLED=(bool, False),
+    VITE_PORT=(int, 5173),
+    VITE_HOST=(str, "vite")
 )

@@ -24,6 +24,15 @@ services:
   redis:
     restart: always
     image: "redis"
+  vite:
+    build:
+      context: .
+      dockerfile: ViteDockerfile
+    ports:
+      - ${VITE_PORT}:5173
+    volumes:
+      - .:/code
+      - /code/node_modules
 #  celery:
 #    build: .
 #    command: celery -A config worker --loglevel=info

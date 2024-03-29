@@ -14,7 +14,7 @@ def getScript(url: object) -> str:
     ext: str = str(url).split(".")[-1]
 
     if env("VITE_LIVE"):
-        url = f"http://localhost:5173/{url}"
+        url = f"http://{env('VITE_HOST')}:{env('VITE_PORT')}/{url}"
     else:
         url: str = static(f"vite/{url}")
 
@@ -52,7 +52,7 @@ def vite_load(*args):
             ]
         )
         imports_files += f""" <script type="module" 
-        src="http://localhost:5173/@vite/client"></script> <script 
+        src="http://{env('VITE_HOST')}:{env('VITE_PORT')}/@vite/client"></script> <script 
         type="module" src="{static(
             "js/vite-refresh.js")}"></script>
                       """

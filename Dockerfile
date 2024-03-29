@@ -13,3 +13,6 @@ RUN pip install -r requirements/local.txt
 
 RUN cp .env.example .env
 
+
+
+
