@@ -4,7 +4,7 @@ services:
   web:
     build: .
     restart: always
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: ./entrypoint.sh
     volumes:
       - .:/code
     ports:
@@ -27,7 +27,7 @@ services:
   ngrok:
     image: ngrok/ngrok:latest
     ports:
-      - 4040:4040
+      - ${NGROK_ADMIN_PORT}:4040
     restart: unless-stopped
     environment:
       NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
@@ -65,3 +65,4 @@ services:
 
 volumes:
   pg_data:
+

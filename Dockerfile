@@ -6,13 +6,9 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
-
 COPY . /code/
+
 
 RUN pip install -r requirements/local.txt
 
 RUN cp .env.example .env
-
-
-
-

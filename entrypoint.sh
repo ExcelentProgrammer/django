@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
-docker compose exec web python3 manage.py migrate --noinput
-docker compose exec web python3 manage.py collectstatic --noinput
-docker compose exec web python3 manage.py seed
+python3 manage.py migrate --noinput
+python3 manage.py collectstatic --noinput
+
+python3 manage.py runserver 0.0.0.0:8000
 
 exec "$@"
