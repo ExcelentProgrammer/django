@@ -24,6 +24,16 @@ services:
   redis:
     restart: always
     image: "redis"
+  ngrok:
+    image: ngrok/ngrok:latest
+    ports:
+      - 4040:4040
+    restart: unless-stopped
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
+    command: http http://web:8000 --domain=${NGROK_DOMAIN}
+
+
 #  vite:
 #    build:
 #      context: .

@@ -18,5 +18,6 @@ env = environ.Env(
     CACHE_TIMEOUT=(int, 120),
     CACHE_ENABLED=(bool, False),
     VITE_PORT=(int, 5173),
-    VITE_HOST=(str, "vite")
+    VITE_HOST=(str, "vite"),
+    NGROK_AUTHTOKEN=(str, "TOKEN")
 )
