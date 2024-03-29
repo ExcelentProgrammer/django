@@ -33,7 +33,6 @@ services:
       NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
     command: http http://web:8000 --domain=${NGROK_DOMAIN}
 
-
 #  vite:
 #    build:
 #      context: .
