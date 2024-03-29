@@ -19,7 +19,7 @@ class Command(BaseCommand):
             return
         try:
             os.system(
-                f"cd ./core/apps && python ./../../manage.py startapp {name}")
+                f"cd ./core/apps && python3 ./../../manage.py startapp {name}")
             self.stdout.write(self.style.SUCCESS(f"Make app {name} created"))
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"Error: {e}"))
